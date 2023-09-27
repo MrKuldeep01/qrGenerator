@@ -18,6 +18,8 @@ body{
     justify-content: center;
     flex-direction: column;
     /* padding: 10px; */
+    transition: all .5s;
+
     width:30%;
     height:50%;
     /* box-sizing: border-box; */
