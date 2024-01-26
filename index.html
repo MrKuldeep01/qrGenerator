@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Q R generate</title>
-    <link rel="stylesheet" href="qr.css">
-    <link rel="stylesheet" href="responsive.css">
-</head>
+    <link rel="stylesheet" href="qr.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <label for="p">Write text or URL :</label>
-        <p  id="p"  spellcheck="false" contenteditable="true"></p>
-        <div id="imgbox">
-            <img src=" " alt="image" id="qrimg">
-        </div>
-        <button id="btn" onclick="makeQR()">Generate QR</button>
+      <label for="p">Write text or URL :</label>
+      <input type="text" class="inputText" placeholder=" Enter text here " />
+      <div id="imgbox">
+        <img src=" " alt="image" id="qrimg" />
+      </div>
+      <button id="btn" onclick="makeQR()">Generate QR</button>
     </div>
     <script>
+      let qrtext = document.querySelector(".inputText");
+      let qrimg = document.getElementById("qrimg");
 
-
-        let qrtext = document.querySelector("#p");
-        // let imgbox = document.getElementById("imgbox");
-        let qrimg = document.getElementById("qrimg");
-
-        function makeQR() {
-            qrimg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=` + qrtext.innerText;
-            console.log("happy now", qrtext.innerText);
-        }
-
-
-
+    async  function makeQR() {
+        document.querySelector("#imgbox").style.display="block";
+        qrimg.src = await 
+          `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=` +
+          qrtext.value;
+        console.log("happy now", qrtext.innerText);
+      }
     </script>
-</body>
-
+  </body>
 </html>
